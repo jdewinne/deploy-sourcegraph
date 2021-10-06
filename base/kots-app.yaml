@@ -1,0 +1,14 @@
+apiVersion: kots.io/v1beta1
+kind: Application
+metadata:
+  name: sourcegraph
+spec:
+  title: Sourcegraph
+  icon: https://pbs.twimg.com/profile_images/1428393724527190022/4mt5PACL_400x400.png
+  statusInformers:
+    - deployment/example-nginx
+  ports:
+    - serviceName: "example-nginx"
+      servicePort: 80
+      localPort: 8888
+      applicationUrl: "http://example-nginx"
