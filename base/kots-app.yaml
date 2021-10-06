@@ -11,4 +11,4 @@ spec:
     - serviceName: "sourcegraph-frontend"
       servicePort: 30080
       localPort: 8888
-      applicationUrl: "http://sourcegraph-frontend"
+      applicationUrl: "http://sourcegraph"

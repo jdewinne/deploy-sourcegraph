@@ -1,0 +1,22 @@
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: "sourcegraph"
+  labels:
+    app.kubernetes.io/name: "sourcegraph"
+    app.kubernetes.io/version: "9.1.1"
+spec:
+  selector:
+    matchLabels:
+     app.kubernetes.io/name: "sourcegraph"
+  componentKinds: []
+  descriptor:
+    version: "9.1.1"
+    description: "Universal Code Search"
+    icons:
+      - src: "https://pbs.twimg.com/profile_images/1428393724527190022/4mt5PACL_400x400.png"
+        type: "image/png"
+    type: "sourcegraph"
+    links:
+      - description: "Universal Code Search"
+        url: "http://sourcegraph"
