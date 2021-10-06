@@ -6,9 +6,9 @@ spec:
   title: Sourcegraph
   icon: https://pbs.twimg.com/profile_images/1428393724527190022/4mt5PACL_400x400.png
   statusInformers:
-    - deployment/example-nginx
+    - deployment/sourcegraph-frontend
   ports:
-    - serviceName: "example-nginx"
-      servicePort: 80
+    - serviceName: "sourcegraph-frontend"
+      servicePort: 30080
       localPort: 8888
-      applicationUrl: "http://example-nginx"
+      applicationUrl: "http://sourcegraph-frontend"
