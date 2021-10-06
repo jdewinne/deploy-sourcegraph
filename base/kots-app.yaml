@@ -9,6 +9,6 @@ spec:
     - deployment/sourcegraph-frontend
   ports:
     - serviceName: "sourcegraph-frontend"
-      servicePort: 30080
+      servicePort: 3080
       localPort: 8888
       applicationUrl: "http://sourcegraph"
