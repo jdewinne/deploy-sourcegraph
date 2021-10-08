@@ -26,6 +26,8 @@ spec:
       labels:
         app: sourcegraph-frontend
         deploy: sourcegraph
+      annotations:
+        kots.io/config-hash: '{{repl ConfigOption "frontend_confighash"}}'
     spec:
       containers:
       - name: frontend

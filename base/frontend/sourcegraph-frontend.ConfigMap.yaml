@@ -36,8 +36,8 @@ data:
           "type": "builtin"
         }
       ],
-      "externalURL": "https://sourcegraph.example.com",
-      "licenseKey": "..."
+      "externalURL": "{{repl ConfigOption "ingress_hostname"}}",
+      "licenseKey": null
       }
     }    
 
