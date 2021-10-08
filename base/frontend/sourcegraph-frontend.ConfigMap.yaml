@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    description: Sourcegraph configuration files
+  labels:
+    deploy: sourcegraph
+  name: frontend-config-files
+data:
+  # IMPORTANT: see https://docs.sourcegraph.com/admin/config/advanced_config_file for details on how this works.
+
+  # Global user settings, see: https://docs.sourcegraph.com/admin/config/advanced_config_file#global-settings
+  global-settings.json: |
+    {
+        "search.scopes": [
+            {
+              "name": "Test code",
+              "value": "file:(test|spec)"
+            },
+            {
+              "name": "Non-test files",
+              "value": "-file:(test|spec)"
+            }
+        ],
+        "extensions": {
+          "sourcegraph/git-extras": true,
+        }
+      }    
+
+  # Site configuration, see: https://docs.sourcegraph.com/admin/config/advanced_config_file#site-configuration
+  site.json: |
+    {
+      "auth.providers": [
+        {
+          "allowSignup": true,
+          "type": "builtin"
+        }
+      ],
+      "externalURL": "https://sourcegraph.example.com",
+      "licenseKey": "..."
+      }
+    }    
+
+  # Code host configuration, see: https://docs.sourcegraph.com/admin/config/advanced_config_file#code-host-configuration
+  extsvc.json: |
+    {
+      "GITHUB": [
+        {
+          "url": "https://github.com",
+          "token": "...",
+          "repositoryQuery": [
+            "none"
+          ],
+        }
+      ]
+    }

@@ -70,6 +70,12 @@ spec:
           value: http://jaeger-query:16686
         - name: PROMETHEUS_URL
           value: http://prometheus:30090
+        - name: SITE_CONFIG_FILE
+          value: /etc/sourcegraph/site.json
+        - name : GLOBAL_SETTINGS_FILE
+          value: /etc/sourcegraph/global-settings.json
+        - name : EXTSVC_CONFIG_FILE
+          value: /etc/sourcegraph/extsvc.json
         terminationMessagePolicy: FallbackToLogsOnError
         livenessProbe:
           httpGet:
@@ -104,6 +110,8 @@ spec:
         volumeMounts:
         - mountPath: /mnt/cache
           name: cache-ssd
+        - mountPath: /etc/sourcegraph
+          name: config-volume
       - name: jaeger-agent
         image: index.docker.io/sourcegraph/jaeger-agent:insiders
         env:
@@ -137,3 +145,7 @@ spec:
       volumes:
       - emptyDir: {}
         name: cache-ssd
+      - name: config-volume
+        configMap:
+          name: frontend-config-files
+          defaultMode: 0644
