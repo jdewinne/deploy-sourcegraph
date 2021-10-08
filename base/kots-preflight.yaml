@@ -8,7 +8,7 @@ spec:
         outcomes:
           - fail:
               when: "< 1.15.0"
-              message: The application requires at Kubernetes 1.15.0 or later, and recommends 1.17.0.
+              message: The application requires Kubernetes 1.15.0 or later, and recommends 1.17.0.
               uri: https://www.kubernetes.io
           - warn:
               when: "< 1.17.0"
@@ -66,3 +66,19 @@ spec:
               message: We recommend at least 32 cores
           - pass:
               message: There are at least 32 cores in the cluster
+    - nodeResources:
+        checkName: Total memory in the cluster must be at least 60Gi
+        outcomes:
+          - fail:
+              when: "sum(memoryCapacity) < 60Gi"
+              message: Total amount of memory must be at least 60Gi
+          - pass:
+              message: Cluster has at least 60Gi of memory
+    - nodeResources:
+        checkName: Total ephemeral disk size must be at least 100Gi
+        outcomes:
+          - fail:
+              when: "sum(ephemeralStorageCapacity) < 100Gi"
+              message: Total amount of ephemeral disk size must be at least 100Gi
+          - pass:
+              message: Cluster has at least 100Gi of ephemeral disk size
