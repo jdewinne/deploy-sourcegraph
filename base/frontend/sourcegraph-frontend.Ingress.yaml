@@ -8,6 +8,7 @@ metadata:
     # See
     # https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
     # for more nginx annotations.
+    kots.io/when: '{{repl ConfigOptionEquals "use_ingress" "1" }}'
   labels:
     app: sourcegraph-frontend
     deploy: sourcegraph
