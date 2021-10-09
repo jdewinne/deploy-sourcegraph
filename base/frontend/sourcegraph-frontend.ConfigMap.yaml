@@ -38,8 +38,7 @@ data:
       ],
       "externalURL": "{{repl ConfigOption "ingress_hostname"}}",
       "licenseKey": null
-      }
-    }    
+    }
 
   # Code host configuration, see: https://docs.sourcegraph.com/admin/config/advanced_config_file#code-host-configuration
   extsvc.json: |
