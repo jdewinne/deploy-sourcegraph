@@ -17,4 +17,4 @@ spec:
     targetPort: http
   selector:
     app: sourcegraph-frontend
-  type: NodePort
+  type: ClusterIP
