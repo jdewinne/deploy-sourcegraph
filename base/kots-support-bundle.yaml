@@ -8,8 +8,8 @@ spec:
     - clusterResources: {}
     - logs:
         selector:
-          - app=example
-          - component=nginx
+          - app=sourcegraph-frontend
+          - deploy=sourcegraph
         namespace: '{{repl Namespace }}'
         limits:
           maxAge: 720h
