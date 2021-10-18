@@ -14,3 +14,16 @@ spec:
         limits:
           maxAge: 720h
           maxLines: 10000
+  analyzers:
+    - textAnalyze:
+        checkName: External URL
+        fileName: sourcegraph-frontend**/frontend.log
+        regex: 'Sourcegraph is ready at:'
+        outcomes:
+          - pass:
+              when: "true"
+              message: "Sourcegraph is ready"
+          - fail:
+              when: "false"
+              message: "Check external url"
+              uri: https://docs.sourcegraph.com/admin/url
