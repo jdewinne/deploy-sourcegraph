@@ -39,5 +39,4 @@ spec:
           - pass:
               message: "Sourcegraph ingress connected"
           - fail:
-              message: "Sourcegraph ingress: could not connect"
-              uri: https://docs.sourcegraph.com/admin/how-to/setup-https
+              message: "Sourcegraph ingress: could not connect. Check [docs](https://docs.sourcegraph.com/admin/how-to/setup-https)"
