@@ -14,6 +14,10 @@ spec:
         limits:
           maxAge: 720h
           maxLines: 10000
+    - http:
+        collectorName: sourcegraph-frontend-ingress
+        get:
+          url: https://{{repl ConfigOption "ingress_hostname"}}
   analyzers:
     - textAnalyze:
         checkName: External URL
@@ -27,4 +31,13 @@ spec:
               when: "false"
               message: "Check external url"
               uri: https://docs.sourcegraph.com/admin/url
+    - textAnalyze:
+        checkName: "Ingress Hostname"
+        fileName: sourcegraph-frontend-ingress.json
+        regex: '"status": 200,'
+        outcomes:
+          - pass:
+              message: "Sourcegraph ingress connected"
+          - fail:
+              message: "Sourcegraph ingress: could not connect. Check [docs](https://docs.sourcegraph.com/admin/how-to/setup-https)"
 
